@@ -30,7 +30,7 @@ class Sommet
         std::vector<const Sommet*> m_voisins;
 
         /// Données spécifiques du sommet
-        std::string m_id; // Identifiant
+        std::string m_id; // Identifiant -->sert de cle
         double m_x, m_y; // Position
 
 };
