@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1551644056 source:d:\cours\tg\sujetstp\tp2\tp2\main.cpp
+	<iostream>
+	"graphe.h"
+
+1551643974 source:d:\cours\tg\sujetstp\tp2\tp2\sommet.cpp
+	<iostream>
+	<queue>
+	<stack>
+	<unordered_map>
+	<unordered_set>
+	"sommet.h"
+
+1551643975 d:\cours\tg\sujetstp\tp2\tp2\sommet.h
+	<string>
+	<vector>
+	<unordered_map>
+	<unordered_set>
+
+1551643974 source:d:\cours\tg\sujetstp\tp2\tp2\graphe.cpp
+	<fstream>
+	<iostream>
+	"graphe.h"
+
+1551643974 d:\cours\tg\sujetstp\tp2\tp2\graphe.h
+	<string>
+	<unordered_map>
+	"sommet.h"
+
