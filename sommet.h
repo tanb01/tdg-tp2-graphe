@@ -21,6 +21,7 @@ class Sommet
         ///méthode qui recherche la composante connexe du sommet
         ///renvoie la liste des ids des sommets de la composante
         std::unordered_set<std::string> rechercherCC() const;
+
         ~Sommet();
 
     protected:
@@ -30,7 +31,7 @@ class Sommet
         std::vector<const Sommet*> m_voisins;
 
         /// Données spécifiques du sommet
-        std::string m_id; // Identifiant
+        std::string m_id; // Identifiant -->sert de cle
         double m_x, m_y; // Position
 
 };
