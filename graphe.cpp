@@ -52,6 +52,12 @@ void graphe::afficher() const
     std::cout<<"graphe : "<<std::endl;
     std::cout<<"  ordre : "<<m_sommets.size()<<std::endl;
 
+    /*
+    for(auto i : m_sommets)
+    {
+        std::cout<<i.first;
+    }*/
+
     for (std::unordered_map<std::string, Sommet*>::const_iterator it = m_sommets.begin(); it != m_sommets.end(); ++it)
     {
         std::cout<<"  sommet :";
@@ -67,6 +73,7 @@ void graphe::parcoursBFS(std::string id) const
     std::unordered_map<std::string,std::string> l_pred;
     l_pred=s0->parcoursBFS();
 }
+
 void graphe::afficherBFS(std::string id) const
 {
     Sommet*s0=(m_sommets.find(id))->second;
@@ -85,12 +92,14 @@ void graphe::afficherBFS(std::string id) const
         std::cout<<id<<std::endl;
     }
 }
+
 void graphe::parcoursDFS(std::string id) const
 {
     Sommet*s0=(m_sommets.find(id))->second;
     std::unordered_map<std::string,std::string> l_pred;
     l_pred=s0->parcoursDFS();
 }
+
 void graphe::afficherDFS(std::string id) const
 {
     Sommet*s0=(m_sommets.find(id))->second;
@@ -109,6 +118,7 @@ void graphe::afficherDFS(std::string id) const
         std::cout<<id<<std::endl;
     }
 }
+
 int graphe::rechercher_afficherToutesCC() const
 {
     int i=0;
@@ -116,6 +126,7 @@ int graphe::rechercher_afficherToutesCC() const
     std::cout<<"recherche et affichage de toutes les composantes connexes a coder"<<std::endl;
     return i;
 }
+
 graphe::~graphe()
 {
     //dtor
