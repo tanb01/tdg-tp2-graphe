@@ -27,9 +27,10 @@
 	<unordered_map>
 	"sommet.h"
 
-1552170752 source:d:\ben\documents\ben folder\homework\ece\ing2\theorie des graphes\tp2\graphe.cpp
+1552591308 source:d:\ben\documents\ben folder\homework\ece\ing2\theorie des graphes\tp2\graphe.cpp
 	<fstream>
 	<iostream>
+	<queue>
 	"graphe.h"
 
 1552067386 d:\ben\documents\ben folder\homework\ece\ing2\theorie des graphes\tp2\graphe.h
@@ -37,13 +38,13 @@
 	<unordered_map>
 	"sommet.h"
 
-1552346215 d:\ben\documents\ben folder\homework\ece\ing2\theorie des graphes\tp2\sommet.h
+1552591375 d:\ben\documents\ben folder\homework\ece\ing2\theorie des graphes\tp2\sommet.h
 	<string>
 	<vector>
 	<unordered_map>
 	<unordered_set>
 
-1552345950 source:d:\ben\documents\ben folder\homework\ece\ing2\theorie des graphes\tp2\sommet.cpp
+1552591758 source:d:\ben\documents\ben folder\homework\ece\ing2\theorie des graphes\tp2\sommet.cpp
 	<iostream>
 	<queue>
 	<stack>
@@ -52,7 +53,7 @@
 	<algorithm>
 	"sommet.h"
 
-1552213041 source:d:\ben\documents\ben folder\homework\ece\ing2\theorie des graphes\tp2\main.cpp
+1552591403 source:d:\ben\documents\ben folder\homework\ece\ing2\theorie des graphes\tp2\main.cpp
 	<iostream>
 	"graphe.h"
 	<unordered_map>

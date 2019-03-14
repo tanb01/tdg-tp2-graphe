@@ -1,5 +1,6 @@
 #include <fstream>
 #include <iostream>
+#include <queue>
 #include "graphe.h"
 
 graphe::graphe(std::string nomFichier)
@@ -51,7 +52,6 @@ void graphe::afficher() const
 {
     std::cout<<"graphe : "<<std::endl;
     std::cout<<"  ordre : "<<m_sommets.size()<<std::endl;
-
     /*
     for(auto i : m_sommets)
     {
@@ -122,8 +122,48 @@ void graphe::afficherDFS(std::string id) const
 int graphe::rechercher_afficherToutesCC() const
 {
     int i=0;
+    bool same=true;
+    const Sommet* s0;
+    std::unordered_set<std::string>cc;
+    std::unordered_set<std::string>marquage;
+    std::queue<std::string> file;
+
     std::cout<<"composantes connexes :"<<std::endl;
-    std::cout<<"recherche et affichage de toutes les composantes connexes a coder"<<std::endl;
+
+    for (const auto& s: m_sommets)
+    {
+        s0 = s.second;
+        cc = s0->rechercherCC();
+
+        for (const auto& c: cc)
+        {
+            if (marquage.find(c)!=marquage.end())
+            {
+                same = false;
+            }
+            else
+            {
+                file.push(c);
+                marquage.insert(c);
+                same = true;
+            }
+        }
+
+        if (same==true)
+        {
+            i++;
+            std::cout<<"   cc"<<i<<std::endl;
+            while (!file.empty())
+            {
+                std::cout<<"     "<<file.front();
+                file.pop();
+            }
+            std::cout<<std::endl;
+        }
+    }
+
+    std::cout<<"nb cc :"<< i <<std::endl;
+
     return i;
 }
 
