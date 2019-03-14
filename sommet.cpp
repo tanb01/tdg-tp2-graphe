@@ -95,12 +95,47 @@ std::unordered_map<std::string,std::string> Sommet::parcoursDFS() const
     return l_pred;
 }
 
-std::unordered_set<std::string> Sommet::rechercherCC() const
+std::unordered_set<std::string> Sommet::rechercherCC() const//PEUT ETRE AMELIORE EN APPELANT parcoursBFS() et en passant atravers une map qui extrait les ids et stock
 {
     std::unordered_set<std::string> cc;
-    std::cout<<"rechercherCC a coder"<<std::endl;
+
+    cc.insert(this->m_id);
+
+    for (const auto& c: this->parcoursBFS())
+    {
+        cc.insert(c.first);
+    }
+
     return cc;
 }
+/*    std::queue<const Sommet*> pile;
+
+    cc.insert(this->m_id);
+
+    pile.push(this);
+
+    while (!pile.empty())
+    {
+        const Sommet* S = pile.front();
+
+        pile.pop();
+
+        for(int x =0; x<S->m_voisins.size(); ++x)
+        {
+            if (cc.find(S->m_voisins[x]->m_id)==cc.end())
+            {
+                pile.push(S->m_voisins[x]);
+
+                cc.insert(S->m_voisins[x]->m_id);
+            }
+        }
+    }*/
+
+/*
+std::string Sommet::getId() const
+{
+    return m_id;
+}*/
 
 Sommet::~Sommet()
 {
