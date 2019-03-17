@@ -27,8 +27,6 @@ class Sommet
         /// méthode qui renvoie le degré d'un sommet
         int getDegre () const;
 
-        //std::string getId() const;
-
         ~Sommet();
 
     protected:
@@ -38,7 +36,7 @@ class Sommet
         std::vector<const Sommet*> m_voisins;
 
         /// Données spécifiques du sommet
-        std::string m_id; // Identifiant -->sert de cle
+        std::string m_id; // Identifiant
         double m_x, m_y; // Position
 
 };
