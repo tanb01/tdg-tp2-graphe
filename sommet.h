@@ -10,11 +10,8 @@ class Sommet
     public:
         ///constructeur qui reçoit en params les données du sommet
         Sommet(std::string,double,double);
-        /// méthode qui ajoute les voisins d'un sommet
         void ajouterVoisin(const Sommet*);
-        /// méthode qui affiche les données d'un sommet (id et position)
         void afficherData() const;
-        /// méthode qui ajffiche les voisins d'un sommet
         void afficherVoisins() const;
         ///méthode de parcours en largeur du graphe à partir du sommet
         ///renvoie les prédécesseurs sous forme d'une map (clé=id du sommet,valeur=id de son prédécesseur)
@@ -24,8 +21,6 @@ class Sommet
         ///méthode qui recherche la composante connexe du sommet
         ///renvoie la liste des ids des sommets de la composante
         std::unordered_set<std::string> rechercherCC() const;
-        /// méthode qui renvoie le degré d'un sommet
-        int getDegre () const;
 
         //std::string getId() const;
 

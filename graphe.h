@@ -11,8 +11,6 @@ class graphe
         //format du fichier ordre/liste des sommets/taille/liste des arêtes
         graphe(std::string);
         ~graphe();
-        ///vérifie existence id
-        int verifieId(std::string) const;
         void afficher() const;
         ///lance un parcours en largeur à partir du sommet d'identifiant id
         void parcoursBFS(std::string) const;
@@ -25,8 +23,6 @@ class graphe
         ///recherche et affiche les composantes connexes
         ///retourne le nombre de composantes connexes
         int rechercher_afficherToutesCC() const;
-        ///détermine et affiche si le graphe admet une chaîne eulérienne, un cycle eulérien ou rien d’eulérien.
-        int isEulerien() const;
 
     protected:
 

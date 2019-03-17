@@ -17,32 +17,12 @@ int main()
     graphe g{"graphe_1.txt"};
     g.afficher();
 
-    std::cout<<"Saisir un sommet pour appliquer BFS et DFS: ";
+    std::cout<<"Saisir un sommet pour appliquer BFS et DFS: ";//il faut bliner
     std::cin>>idsommet;
 
-    //Blindage
-    while(g.verifieId(idsommet)!=1)
-    {
-        std::cout<<"Veuillez resaisir un sommet pour appliquer BFS et DFS: ";
-        std::cin>>idsommet;
-    }
-
-    g.afficherBFS(idsommet); // appel méthode pour afficher le BFS
-    g.afficherDFS(idsommet); // appel méthode pour afficher le DFS
-    int ncc=g.rechercher_afficherToutesCC(); // appel méthode pour rechercher et afficher toutes les comosantes connexes
-
-    int resultat=g.isEulerien(); // appel méthode qui nous dit si présence d'un cycle, d'une chaine ou rien d'eulérien
-    if (resultat==0)
-    {
-        std::cout<<"Le graphe n'admet rien d'eulerien"<<std::endl;
-    }
-    else if (resultat==1)
-    {
-        std::cout<<"Le graphe admet une chaine eulerienne"<<std::endl;
-    }
-    else
-    {
-        std::cout<<"Le graphe admet un cycle eulerien"<<std::endl;
-    }
+    g.afficherBFS(idsommet);
+    g.afficherDFS(idsommet);
+    int ncc=g.rechercher_afficherToutesCC();
+    std::cout<<"le graphe est-il eulerien ? a coder ..."<<std::endl<<std::endl;
     return 0;
 }
