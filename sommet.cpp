@@ -36,11 +36,11 @@ std::unordered_map<std::string,std::string> Sommet::parcoursBFS() const
     std::unordered_set<std::string> marquage;
     std::queue<const Sommet*> file;
 
-    marquage.insert(this->m_id);
+    marquage.insert(this->m_id); //insertion de l'id dans la unordered_set
 
     file.push(this);
 
-    while (!file.empty())
+    while (!file.empty()) // tant que la file n'est pas vide
     {
         const Sommet* S = file.front();
 
@@ -52,9 +52,9 @@ std::unordered_map<std::string,std::string> Sommet::parcoursBFS() const
             {
                 file.push(S->m_voisins[x]);                             //Alors ajouts des voisins dans la file
 
-                marquage.insert(S->m_voisins[x]->m_id);                 //On marque l'id du sommet voisin en l'inserant dans une unordered set
+                marquage.insert(S->m_voisins[x]->m_id);                 //On marque l'id du sommet voisin en l'inserant dans une unordered_set
 
-                l_pred.insert({S->m_voisins[x]->m_id, S->m_id});        //On isnert l'id du nouveau sommet et du sommet predecesseur
+                l_pred.insert({S->m_voisins[x]->m_id, S->m_id});        //On insert l'id du nouveau sommet et du sommet predecesseur
             }
         }
     }
@@ -65,17 +65,16 @@ std::unordered_map<std::string,std::string> Sommet::parcoursBFS() const
 std::unordered_map<std::string,std::string> Sommet::parcoursDFS() const
 {
     std::unordered_map<std::string,std::string> l_pred;
-
     std::unordered_set<std::string> marquage;
     std::stack<const Sommet*> pile;
 
-    marquage.insert(this->m_id);
+    marquage.insert(this->m_id); // On insert l'id dans une unordered_set
 
     pile.push(this);
 
     while (!pile.empty())
     {
-        const Sommet* S = pile.top();
+        const Sommet* S = pile.top(); // on va au début de la file
 
         pile.pop();
 
@@ -95,15 +94,15 @@ std::unordered_map<std::string,std::string> Sommet::parcoursDFS() const
     return l_pred;
 }
 
-std::unordered_set<std::string> Sommet::rechercherCC() const//PEUT ETRE AMELIORE EN APPELANT parcoursBFS() et en passant atravers une map qui extrait les ids et stock
+std::unordered_set<std::string> Sommet::rechercherCC() const
 {
     std::unordered_set<std::string> cc;
 
-    cc.insert(this->m_id);
+    cc.insert(this->m_id); // met dans cc l'id du sommet qu'on a sélectionné
 
-    for (const auto& c: this->parcoursBFS())
+    for (const auto& c: this->parcoursBFS()) // on fait le BFS du sommet sélectionné
     {
-        cc.insert(c.first);
+        cc.insert(c.first); // on insert chaque élément du BFS dans la cc // first est l'id du sommet
     }
 
     return cc;
@@ -130,6 +129,11 @@ std::unordered_set<std::string> Sommet::rechercherCC() const//PEUT ETRE AMELIORE
             }
         }
     }*/
+
+int Sommet::getDegre() const
+{
+    return m_voisins.size();
+}
 
 /*
 std::string Sommet::getId() const
