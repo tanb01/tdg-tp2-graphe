@@ -36,15 +36,15 @@ std::unordered_map<std::string,std::string> Sommet::parcoursBFS() const
     std::unordered_set<std::string> marquage;
     std::queue<const Sommet*> file;
 
-    marquage.insert(this->m_id); //insertion de l'id dans la unordered_set
+    marquage.insert(this->m_id);                                        //On marque l'id du sommet
 
-    file.push(this);
+    file.push(this);                                                    //On ajoute l'id du sommet dans la file
 
-    while (!file.empty()) // tant que la file n'est pas vide
+    while (!file.empty())                                               //Tant que la file n'est pas vide
     {
         const Sommet* S = file.front();
 
-        file.pop();
+        file.pop();                                                     //On enleve le sommet
 
         for(int x =0; x<S->m_voisins.size(); ++x)                       //On balaye les voisins du sommet S
         {
@@ -68,15 +68,15 @@ std::unordered_map<std::string,std::string> Sommet::parcoursDFS() const
     std::unordered_set<std::string> marquage;
     std::stack<const Sommet*> pile;
 
-    marquage.insert(this->m_id); // On insert l'id dans une unordered_set
+    marquage.insert(this->m_id);                                        //On insert l'id dans une unordered_set
 
     pile.push(this);
 
     while (!pile.empty())
     {
-        const Sommet* S = pile.top(); // on va au début de la file
+        const Sommet* S = pile.top();                                   //On va au début de la file
 
-        pile.pop();
+        pile.pop();                                                     //On enleve le dernier element qui est dans la pile
 
         for(int x =0; x<S->m_voisins.size(); ++x)                       //On balaye les voisins du sommet S
         {
@@ -86,7 +86,7 @@ std::unordered_map<std::string,std::string> Sommet::parcoursDFS() const
 
                 marquage.insert(S->m_voisins[x]->m_id);                 //On marque l'id du sommet voisin en l'inserant dans une unordered set
 
-                l_pred.insert({S->m_voisins[x]->m_id, S->m_id});        //On isnert l'id du nouveau sommet et du sommet predecesseur
+                l_pred.insert({S->m_voisins[x]->m_id, S->m_id});        //On insert l'id du nouveau sommet et du sommet predecesseur
             }
         }
     }
@@ -98,63 +98,24 @@ std::unordered_set<std::string> Sommet::rechercherCC() const
 {
     std::unordered_set<std::string> cc;
 
-    cc.insert(this->m_id); // met dans cc l'id du sommet qu'on a sélectionné
+    cc.insert(this->m_id);                                              //Met dans cc l'id du sommet qu'on a sélectionné
 
-    for (const auto& c: this->parcoursBFS()) // on fait le BFS du sommet sélectionné
+    for (const auto& c: this->parcoursBFS())                            //On fait le BFS du sommet sélectionné
     {
-        cc.insert(c.first); // on insert chaque élément du BFS dans la cc // first est l'id du sommet
+        cc.insert(c.first);                                             //On insert chaque élément du BFS dans la cc // first est l'id du sommet
     }
 
     return cc;
 }
-/*    std::queue<const Sommet*> pile;
 
-    cc.insert(this->m_id);
 
-    pile.push(this);
-
-    while (!pile.empty())
-    {
-        const Sommet* S = pile.front();
-
-        pile.pop();
-
-        for(int x =0; x<S->m_voisins.size(); ++x)
-        {
-            if (cc.find(S->m_voisins[x]->m_id)==cc.end())
-            {
-                pile.push(S->m_voisins[x]);
-
-                cc.insert(S->m_voisins[x]->m_id);
-            }
-        }
-    }*/
-
-int Sommet::getDegre() const
+int Sommet::getDegre() const                                             //Methode qui renvoie le degree du sommet
 {
     return m_voisins.size();
 }
 
-/*
-std::string Sommet::getId() const
-{
-    return m_id;
-}*/
 
 Sommet::~Sommet()
 {
     //dtor
 }
-/*
-///Sous programme qui compare les coordonées Y  return true si a < b
-bool Fonctinf(Environnement* a, Environnement* b)
-{
-    return (a->getCoords().getY()<b->getCoords().getY());
-}
-
-///Méthode de trie en utilisant la fonction std::sort de la bibliothque <algorithm>
-///Trie par ordre croissant le vecteur m_objet du début à la fin
-void Sommet::trier()
-{
-    std::sort(m_voisins.begin(), m_voisins.end(), Fonctinf);
-}*/

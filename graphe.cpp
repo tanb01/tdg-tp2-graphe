@@ -54,7 +54,8 @@ void graphe::afficher() const
     std::cout<<"  ordre : "<<m_sommets.size()<<std::endl;
 
     for (std::unordered_map<std::string, Sommet*>::const_iterator it = m_sommets.begin(); it != m_sommets.end(); ++it) // parcours de la map
-    {                                                                                                                  // m_sommets
+    {
+        // m_sommets
         std::cout<<"  sommet :";
         it->second->afficherData(); // appel des méthodes pour affiche les données et les voisins de chaque id
         it->second->afficherVoisins();
@@ -129,20 +130,20 @@ int graphe::rechercher_afficherToutesCC() const
 
     for (const auto& s: m_sommets)
     {
-        s0 = s.second; // second vaut le pointeur sur la valeur
-        cc = s0->rechercherCC(); // cc prend la liste des ids de la composante connexe du sommet (on cherche un élément grâce à son adresse
+        s0 = s.second;                              //Second vaut le pointeur sur la valeur
+        cc = s0->rechercherCC();                    //cc prend la liste des ids de la composante connexe du sommet (on cherche un élément grâce à son adresse
 
-        for (const auto& c: cc) // parcours de la liste des ids de la composante connexe du sommet
+        for (const auto& c: cc)                     //Parcours de la liste des ids de la composante connexe du sommet
         {
-            if (marquage.find(c)!=marquage.end()) // ici on vérifie que tous les sommets ont été marqués
+            if (marquage.find(c)!=marquage.end())   //Ici on vérifie que tous les sommets ont été marqués
             {
-                same = false; // on n'a pas trouvé
+                same = false;                       //Si on trouve le sommet alors on marque false "Trouvé"
             }
-            else
+            else                                    //Sinon
             {
-                file.push(c);
+                file.push(c);                       //On ajoute tout les ids des sommets non marques dans la file
                 marquage.insert(c);
-                same = true; // on a trouvé
+                same = true;
             }
         }
 
@@ -150,10 +151,10 @@ int graphe::rechercher_afficherToutesCC() const
         {
             i++;
             std::cout<<"   cc"<<i<<std::endl;
-            while (!file.empty()) // tant que la file n'est pas vide
+            while (!file.empty())                   //Tant que la file n'est pas vide
             {
-                std::cout<<"     "<<file.front(); // on affiche le premier élément de la file
-                file.pop(); // enlève les éléments de la file
+                std::cout<<"     "<<file.front();   //On affiche le premier élément de la file
+                file.pop();                         //Enlève les éléments de la file
             }
             std::cout<<std::endl;
         }
@@ -182,20 +183,20 @@ int graphe::isEulerien() const
 
     for (const auto& s: m_sommets)
     {
-        s0 = s.second; // second vaut le pointeur sur la valeur
-        cc = s0->rechercherCC(); // cc prend la liste des ids de la composante connexe du sommet (on cherche un élément grâce à son adresse
+        s0 = s.second;                                      //Second vaut la valeur qui est un pointeur sur un sommet
+        cc = s0->rechercherCC();                            //cc prend la liste des ids de la composante connexe du sommet (on cherche un élément grâce à son adresse
 
-        for (const auto& c: cc) // parcours de la liste des ids de la composante connexe du sommet
+        for (const auto& c: cc)                             //Parcours de la liste des ids de la composante connexe du sommet
         {
-            if (marquage.find(c)!=marquage.end()) // ici on vérifie que tous les sommets ont été marqués
+            if (marquage.find(c)!=marquage.end())           //Ici on vérifie que tous les sommets ont été marqués
             {
-                same = false; // pas trouvé
+                same = false;                               //Si on trouve le sommet alors on marque false "Trouvé"
             }
-            else
+            else                                            //Sinon
             {
-                file.push(c);
+                file.push(c);                               //On ajoute tout les ids des sommets non marques dans la file
                 marquage.insert(c);
-                same = true; // trouvé
+                same = true;
             }
         }
 
@@ -203,16 +204,16 @@ int graphe::isEulerien() const
         {
             i++;
             std::cout<<"   cc"<<i<<std::endl;
-            // on réinitialise les valeurs pour chaque nouvelle composante connexe
+            //On réinitialise les valeurs pour chaque nouvelle composante connexe
             nB_sommet_degPair=0;
             nB_sommet_degImpair=0;
             nB_sommet=0;
             chaine=" ";
 
-            // parcours de la composante connexe
-            while (!file.empty()) // tant que la file n'est pas vide
+            //Parcours de la composante connexe
+            while (!file.empty()) //Tant que la file n'est pas vide
             {
-                Sommet*s1=(m_sommets.find(file.front()))->second; //on prend le premier de la file
+                Sommet*s1=(m_sommets.find(file.front()))->second;           //On prend le premier element de la file
                 int degSommet=s1->getDegre();
                 chaine=chaine+" "+file.front();
 
@@ -228,8 +229,8 @@ int graphe::isEulerien() const
                         ++nB_sommet_degImpair;
                     }
                 }
-                ++nB_sommet; // compte le nombre de sommets par composante
-                file.pop(); // enlève les éléments de la file
+                ++nB_sommet; //Compte le nombre de sommets par composante
+                file.pop(); //Enlève les éléments de la file
             }
 
             //Analyse de la composante connexe : chaine, cycle ou rien
@@ -237,12 +238,12 @@ int graphe::isEulerien() const
             {
                 if(nB_sommet_degImpair==0)
                 {
-                    ++nB_cycle; // compte nombre de cycle
+                    ++nB_cycle; //Compte nombre de cycle
                     std::cout<<std::endl<<" Cycle eulerien present : "<<chaine<<std::endl;
                 }
                 else if ((nB_sommet_degImpair==0)||(nB_sommet_degImpair==2))
                 {
-                    ++nB_chaine; // compte nombre de chaineh
+                    ++nB_chaine; //Compte nombre de chaine
                     std::cout<<std::endl<<" Chaine eulerien presente : "<<chaine<<std::endl;
                 }
                 else
@@ -253,7 +254,7 @@ int graphe::isEulerien() const
             std::cout<<std::endl;
         }
     }
-    /// sortie
+    ///Sortie
     if(nB_cycle>0)
     {
         return 2;
@@ -268,9 +269,10 @@ int graphe::isEulerien() const
 
 int graphe::verifieId(std::string id) const
 {
-    if(m_sommets.find(id)!=m_sommets.end())//si la clé existe
+    if(m_sommets.find(id)!=m_sommets.end())     //Si la clé existe
         return 1;
-    else return 0;
+    else
+        return 0;
 }
 
 graphe::~graphe()
